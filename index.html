@@ -15,7 +15,7 @@
 <header class="nav"><a class="brand" href="#">COLOGNE <span>CENTRAL</span></a><nav class="navlinks" id="navlinks"><a href="#library">Library</a><a href="#new-arrivals">New arrivals</a><a href="#radar">Fragrance Radar</a><a href="#breakdown">Scent Breakdown</a><a href="#finder">Scent Finder</a><a href="#collection">My Collection</a></nav><button class="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">MENU ☰</button></header>
 <main>
 <section class="hero"><div><div class="eyebrow">Your fragrance journey starts here</div><h1>Find the scent<br>that <em>defines you.</em></h1><p>Explore fragrance profiles, discover your next signature scent, compare what matters, and keep your collection in one place.</p><div class="actions"><a class="btn" href="#library">Explore fragrances</a><a class="btn secondary" href="#finder">Find my scent</a></div></div><div class="hero-art"><div class="halo"></div><div class="bottle"><div class="cap"></div><small>COLOGNE</small><strong>CENTRAL</strong><span>EAU DE PARFUM</span></div></div></section>
-<section class="section" id="new-arrivals"><div class="sectionhead"><div><div class="eyebrow">Just added</div><h2>New fragrance arrivals</h2></div><p>Fresh additions from JPG and the Stronger With You collection.</p></div><div class="grid" id="newArrivals"></div></section>
+<section class="section" id="new-arrivals"><div class="sectionhead"><div><div class="eyebrow">Just added</div><h2>New fragrance arrivals</h2></div><p>Ten new additions across woody, smoky, sweet, spicy and fresh scent styles.</p></div><div class="grid" id="newArrivals"></div></section>
 <section class="section" id="library"><div class="sectionhead"><div><div class="eyebrow">The fragrance library</div><h2>Explore the collection</h2></div><p>Browse by scent family and discover your next favorite.</p></div><input class="search" id="search" placeholder="Search fragrance, brand, or notes..." oninput="renderProducts()" style="width:100%;margin-bottom:15px"><div class="filters" id="filters"><button class="chip active" data-filter="All">All scents</button><button class="chip" data-filter="Woody">Woody</button><button class="chip" data-filter="Fresh">Fresh</button><button class="chip" data-filter="Spicy">Spicy</button><button class="chip" data-filter="Amber">Amber</button><button class="chip" data-filter="Sweet">Sweet</button></div><div class="grid" id="products"></div></section>
 <section class="featureband" id="radar"><div><div class="eyebrow">Fragrance Radar</div><h2>Keep your nose on what's next.</h2><p>A home for trending scents, new releases, and fragrances worth discovering. This starter version includes a curated sample shelf; live trend and release data can be connected in a future update.</p></div><a class="btn secondary" href="#library">Browse the library</a></section>
 <section class="section" id="breakdown"><div class="eyebrow">Understand the layers</div><h2>Scent Breakdown</h2><p style="color:#aaa;font-size:13px;line-height:1.7">Explore how a fragrance is structured, from its first impression to the notes that linger. Note pyramids are simplified guides and can vary by source or formulation.</p><div class="breakdown-panel"><div class="breakdown-select"><select id="breakdownFragrance"></select><button class="btn" onclick="showBreakdown()">Explore notes</button></div><div id="breakdownResult" class="result">Choose a fragrance to explore its scent layers.</div></div></section>
@@ -39,6 +39,16 @@ const fragrances=[
 {name:"Stronger With You Intensely",brand:"Emporio Armani",family:"Sweet",notes:"Pink Pepper · Vanilla · Amber · Chestnut",price:"Designer",image:"https://www.armanibeauty.co.uk/dw/image/v2/AAQP_PRD/on/demandware.static/-/Sites-gac-master-catalog/default/dw38450f1d/products/ww-00180-arm/GA_ww-00180-arm_EA-stronger-with-you-Intensely-100ml.jpg"},
 {name:"Stronger With You Absolutely",brand:"Emporio Armani",family:"Amber",notes:"Rum · Chestnut · Vanilla · Cedar",price:"Designer",image:"https://belvish.com/cdn/shop/products/Absolutely.jpg?v=1705595274&width=1946"},
 {name:"Stronger With You Parfum",brand:"Emporio Armani",family:"Woody",notes:"Chestnut · Pink Pepper · Leathered Vanilla",price:"Designer",image:"https://perfumegallery.ae/cdn/shop/files/Untitled_1_5b75e4d8-a789-4c86-b4bc-14283784ca46.png?v=1760599987"}
+{name:"For Men Intense",brand:"Bentley",family:"Woody",notes:"Black Pepper · Rum · Leather · Woods",price:"Affordable",image:""},
+{name:"Asad",brand:"Lattafa",family:"Spicy",notes:"Black Pepper · Pineapple · Tobacco · Vanilla",price:"Affordable",image:""},
+{name:"Khamrah",brand:"Lattafa",family:"Sweet",notes:"Cinnamon · Dates · Praline · Vanilla",price:"Affordable",image:""},
+{name:"Club de Nuit Intense Man",brand:"Armaf",family:"Fresh",notes:"Lemon · Pineapple · Birch · Musk",price:"Affordable",image:""},
+{name:"9PM",brand:"Afnan",family:"Sweet",notes:"Apple · Cinnamon · Lavender · Vanilla",price:"Affordable",image:""},
+{name:"Bade'e Al Oud (Oud for Glory)",brand:"Lattafa",family:"Woody",notes:"Saffron · Nutmeg · Oud · Patchouli",price:"Affordable",image:""},
+{name:"Shuhrah",brand:"Rasasi",family:"Woody",notes:"Tomato Leaf · Rose · Leather · Oud",price:"Affordable",image:""},
+{name:"Supremacy Silver",brand:"Afnan",family:"Fresh",notes:"Pineapple · Apple · Birch · Oakmoss",price:"Affordable",image:""},
+{name:"Khamrah Qahwa",brand:"Lattafa",family:"Sweet",notes:"Ginger · Cinnamon · Coffee · Vanilla",price:"Affordable",image:""},
+{name:"Club Black",brand:"Mercedes-Benz",family:"Amber",notes:"Bergamot · Incense · Vanilla · Amber",price:"Mid-range",image:""}
 ];
 let active="All";
 const scentProfiles={
@@ -55,6 +65,17 @@ const scentProfiles={
 "Jean Paul Gaultier|Le Male Elixir":{top:"Lavender · Mint",heart:"Vanilla · Benzoin",base:"Honey · Tonka bean · Tobacco"},
 "Emporio Armani|Stronger With You Absolutely":{top:"Rum accord · Bergamot",heart:"Lavender · Davana",base:"Vanilla · Cedar · Patchouli"},
 "Emporio Armani|Stronger With You Parfum":{top:"Mandarin · Pink pepper",heart:"Lavender · Sage",base:"Chestnut · Vanilla · Leather accord"}
+
+" Bentley|For Men Intense":{top:"Black pepper · Bergamot · Bay leaf",heart:"Rum · Cinnamon · Clary sage",base:"Leather · Benzoin · Woods"},
+"Lattafa|Asad":{top:"Black pepper · Pineapple · Tobacco",heart:"Coffee · Patchouli · Iris",base:"Vanilla · Amber · Dry woods"},
+"Lattafa|Khamrah":{top:"Cinnamon · Nutmeg · Bergamot",heart:"Dates · Praline · Tuberose",base:"Vanilla · Tonka bean · Benzoin"},
+"Armaf|Club de Nuit Intense Man":{top:"Lemon · Pineapple · Bergamot",heart:"Birch · Jasmine · Rose",base:"Musk · Ambergris · Patchouli"},
+"Afnan|9PM":{top:"Apple · Cinnamon · Wild lavender",heart:"Orange blossom · Lily of the valley",base:"Vanilla · Tonka bean · Amber · Patchouli"},
+"Lattafa|Bade'e Al Oud (Oud for Glory)":{top:"Saffron · Nutmeg · Lavender",heart:"Agarwood · Patchouli",base:"Musk · Oud · Patchouli"},
+"Rasasi|Shuhrah":{top:"Tomato leaf · Freesia · Rose",heart:"Rose · Cedar · Jasmine",base:"Leather · Oud · Oakmoss"},
+"Afnan|Supremacy Silver":{top:"Pineapple · Apple · Bergamot",heart:"Birch · Jasmine · Patchouli",base:"Musk · Oakmoss · Ambergris"},
+"Lattafa|Khamrah Qahwa":{top:"Ginger · Cinnamon · Cardamom",heart:"Praline · Candied fruits · White flowers",base:"Coffee · Vanilla · Tonka bean · Musk"},
+"Mercedes-Benz|Club Black":{top:"Bergamot",heart:"Incense · Jasmine",base:"Vanilla · Benzoin · Amber · Woods"}
 };
 const scentTags={
 "Tom Ford|Oud Wood":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Premium"},
@@ -70,6 +91,17 @@ const scentTags={
 "Jean Paul Gaultier|Le Male Elixir":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
 "Emporio Armani|Stronger With You Absolutely":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
 "Emporio Armani|Stronger With You Parfum":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"}
+
+"Bentley|For Men Intense":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Lattafa|Asad":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Lattafa|Khamrah":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Armaf|Club de Nuit Intense Man":{seasons:["Spring","Summer","Fall"],strength:"Strong",budget:"Affordable"},
+"Afnan|9PM":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Lattafa|Bade'e Al Oud (Oud for Glory)":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Rasasi|Shuhrah":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Afnan|Supremacy Silver":{seasons:["Spring","Summer","Fall"],strength:"Strong",budget:"Affordable"},
+"Lattafa|Khamrah Qahwa":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Mercedes-Benz|Club Black":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Mid-range"}
 };
 function fragranceKey(f){return f.brand+"|"+f.name}
 function showBreakdown(){const f=fragrances.find(x=>fragranceKey(x)===document.getElementById("breakdownFragrance").value);const n=f&&scentProfiles[fragranceKey(f)];document.getElementById("breakdownResult").innerHTML=f&&n?"<div><b>"+f.brand+" — "+f.name+"</b></div><div class=\"note-columns\"><div class=\"note-column\"><h3>Top notes</h3><p>"+n.top+"</p><p class=\"finder-help\">The opening impression.</p></div><div class=\"note-column\"><h3>Heart notes</h3><p>"+n.heart+"</p><p class=\"finder-help\">The main character as it develops.</p></div><div class=\"note-column\"><h3>Base notes</h3><p>"+n.base+"</p><p class=\"finder-help\">The deeper notes that linger.</p></div></div>":"Note details are not available for this fragrance yet."}
@@ -77,7 +109,7 @@ function initBreakdown(){const s=document.getElementById("breakdownFragrance");c
 
 const saved=JSON.parse(localStorage.getItem("ccSaved")||"[]");
 function bottle(f){return '<div class="product-art"><img class="product-photo" src="'+f.image+'" alt="'+f.brand+' '+f.name+' fragrance bottle" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="mini-bottle"><b>CC</b><small>FRAGRANCE</small></div></div>'}
-function renderNewArrivals(){const names=["Le Male Le Parfum","Ultra Male","Le Male Elixir","Stronger With You Intensely","Stronger With You Absolutely","Stronger With You Parfum"];const picks=names.map(name=>fragrances.find(f=>f.name===name && (f.brand==="Jean Paul Gaultier"||f.brand==="Emporio Armani"))).filter(Boolean);document.getElementById("newArrivals").innerHTML=picks.map(f=>`<article class="card">${bottle(f)}<div class="cardbody"><div class="brandname">${f.brand} · ${f.family}</div><h3>${f.name}</h3><div class="notes">${f.notes}</div><div class="cardbuttons"><button class="smallbtn" onclick="saveItem('${f.name}')">＋ Save to collection</button></div></div></article>`).join("");}
+function renderNewArrivals(){const picks=fragrances.slice(-10);document.getElementById("newArrivals").innerHTML=picks.map(f=>`<article class="card">${bottle(f)}<div class="cardbody"><div class="brandname">${f.brand} · ${f.family}</div><h3>${f.name}</h3><div class="notes">${f.notes}</div><div class="cardbuttons"><button class="smallbtn" onclick="saveItem('${f.name}')">＋ Save to collection</button></div></div></article>`).join("");}
 function renderProducts(){
  const q=document.getElementById("search").value.toLowerCase();
  const list=fragrances.filter(f=>(active==="All"||f.family===active)&&(`${f.name} ${f.brand} ${f.notes} ${f.family}`).toLowerCase().includes(q));
