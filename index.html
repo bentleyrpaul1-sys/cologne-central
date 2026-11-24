@@ -48,7 +48,17 @@ const fragrances=[
 {name:"Shuhrah",brand:"Rasasi",family:"Woody",notes:"Tomato Leaf · Rose · Leather · Oud",price:"Affordable",image:""},
 {name:"Supremacy Silver",brand:"Afnan",family:"Fresh",notes:"Pineapple · Apple · Birch · Oakmoss",price:"Affordable",image:""},
 {name:"Khamrah Qahwa",brand:"Lattafa",family:"Sweet",notes:"Ginger · Cinnamon · Coffee · Vanilla",price:"Affordable",image:""},
-{name:"Club Black",brand:"Mercedes-Benz",family:"Amber",notes:"Bergamot · Incense · Vanilla · Amber",price:"Mid-range",image:""}
+{name:"Club Black",brand:"Mercedes-Benz",family:"Amber",notes:"Bergamot · Incense · Vanilla · Amber",price:"Mid-range",image:""},
+{name:"Encre Noire",brand:"Lalique",family:"Woody",notes:"Cypress · Vetiver · Cashmere Wood · Musk",price:"Affordable",image:""},
+{name:"Explorer",brand:"Montblanc",family:"Woody",notes:"Bergamot · Pink Pepper · Leather · Vetiver · Patchouli",price:"Mid-range",image:""},
+{name:"Gentleman Reserve Privée",brand:"Givenchy",family:"Amber",notes:"Whisky · Chestnut · Iris · Cedar · Amber",price:"Premium",image:""},
+{name:"Hero Eau de Parfum",brand:"Burberry",family:"Woody",notes:"Pine Needles · Cedarwood · Benzoin",price:"Premium",image:""},
+{name:"Supremacy Not Only Intense",brand:"Afnan",family:"Fresh",notes:"Black Currant · Bergamot · Oakmoss · Patchouli · Saffron",price:"Affordable",image:""},
+{name:"Vintage Radio",brand:"Lattafa",family:"Woody",notes:"Lavender · Plum · Palo Santo · Sandalwood · Amberwood",price:"Affordable",image:""},
+{name:"Moustache Eau de Parfum",brand:"Rochas",family:"Amber",notes:"Pink Pepper · Mandarin · Cedar · Benzoin · Vanilla",price:"Affordable",image:""},
+{name:"Man X",brand:"Halloween",family:"Spicy",notes:"Cardamom · Coffee · Whiskey · Cinnamon · Tonka Bean",price:"Affordable",image:""},
+{name:"For Men Absolute",brand:"Bentley",family:"Woody",notes:"Ginger · Pink Pepper · Papyrus · Sandalwood · Cedar",price:"Affordable",image:""},
+{name:"Select Night",brand:"Mercedes-Benz",family:"Amber",notes:"Cardamom · Lavender · Benzoin · Vanilla · Patchouli",price:"Mid-range",image:""}
 ];
 let active="All";
 const scentProfiles={
@@ -64,9 +74,8 @@ const scentProfiles={
 "Jean Paul Gaultier|Ultra Male":{top:"Pear · Lavender · Mint",heart:"Cinnamon · Clary sage · Caraway",base:"Vanilla · Amber · Patchouli"},
 "Jean Paul Gaultier|Le Male Elixir":{top:"Lavender · Mint",heart:"Vanilla · Benzoin",base:"Honey · Tonka bean · Tobacco"},
 "Emporio Armani|Stronger With You Absolutely":{top:"Rum accord · Bergamot",heart:"Lavender · Davana",base:"Vanilla · Cedar · Patchouli"},
-"Emporio Armani|Stronger With You Parfum":{top:"Mandarin · Pink pepper",heart:"Lavender · Sage",base:"Chestnut · Vanilla · Leather accord"}
-
-" Bentley|For Men Intense":{top:"Black pepper · Bergamot · Bay leaf",heart:"Rum · Cinnamon · Clary sage",base:"Leather · Benzoin · Woods"},
+"Emporio Armani|Stronger With You Parfum":{top:"Mandarin · Pink pepper",heart:"Lavender · Sage",base:"Chestnut · Vanilla · Leather accord"},
+"Bentley|For Men Intense":{top:"Black pepper · Bergamot · Bay leaf",heart:"Rum · Cinnamon · Clary sage",base:"Leather · Benzoin · Woods"},
 "Lattafa|Asad":{top:"Black pepper · Pineapple · Tobacco",heart:"Coffee · Patchouli · Iris",base:"Vanilla · Amber · Dry woods"},
 "Lattafa|Khamrah":{top:"Cinnamon · Nutmeg · Bergamot",heart:"Dates · Praline · Tuberose",base:"Vanilla · Tonka bean · Benzoin"},
 "Armaf|Club de Nuit Intense Man":{top:"Lemon · Pineapple · Bergamot",heart:"Birch · Jasmine · Rose",base:"Musk · Ambergris · Patchouli"},
@@ -76,6 +85,17 @@ const scentProfiles={
 "Afnan|Supremacy Silver":{top:"Pineapple · Apple · Bergamot",heart:"Birch · Jasmine · Patchouli",base:"Musk · Oakmoss · Ambergris"},
 "Lattafa|Khamrah Qahwa":{top:"Ginger · Cinnamon · Cardamom",heart:"Praline · Candied fruits · White flowers",base:"Coffee · Vanilla · Tonka bean · Musk"},
 "Mercedes-Benz|Club Black":{top:"Bergamot",heart:"Incense · Jasmine",base:"Vanilla · Benzoin · Amber · Woods"}
+,"Lalique|Encre Noire":{top:"Cypress · Bergamot",heart:"Vetiver · Haitian Vetiver",base:"Cashmere Wood · Musk"},
+"Montblanc|Explorer":{top:"Bergamot · Pink Pepper · Clary Sage",heart:"Leather · Vetiver",base:"Patchouli · Ambroxan · Akigalawood"},
+"Givenchy|Gentleman Reserve Privée":{top:"Bergamot",heart:"Whisky Absolute · Chestnut · Iris",base:"Benzoin · Cedarwood · Vetiver"},
+"Burberry|Hero Eau de Parfum":{top:"Pine Needles",heart:"Cedarwood",base:"Benzoin · Woody Notes"},
+"Afnan|Supremacy Not Only Intense":{top:"Black Currant · Bergamot · Apple",heart:"Oakmoss · Patchouli · Lavender",base:"Saffron · Musk · Amber"},
+"Lattafa|Vintage Radio":{top:"Lavender · Sage · Bergamot",heart:"Plum · Palo Santo",base:"Sandalwood · Amberwood · Musk"},
+"Rochas|Moustache Eau de Parfum":{top:"Pink Pepper · Mandarin",heart:"Cedarwood · Patchouli",base:"Benzoin · Vanilla"},
+"Halloween|Man X":{top:"Cardamom · Lavender · Lemon",heart:"Coffee · Whiskey · Cinnamon",base:"Tonka Bean · Amber · Leather"},
+"Bentley|For Men Absolute":{top:"Ginger · Pink Pepper",heart:"Olibanum · Papyrus",base:"Sandalwood · Cedarwood · Amber"},
+"Mercedes-Benz|Select Night":{top:"Cardamom · Lavender",heart:"Cedarwood · Guaiac Wood",base:"Benzoin · Vanilla · Patchouli"}
+
 };
 const scentTags={
 "Tom Ford|Oud Wood":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Premium"},
@@ -90,8 +110,7 @@ const scentTags={
 "Jean Paul Gaultier|Ultra Male":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
 "Jean Paul Gaultier|Le Male Elixir":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
 "Emporio Armani|Stronger With You Absolutely":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
-"Emporio Armani|Stronger With You Parfum":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"}
-
+"Emporio Armani|Stronger With You Parfum":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"},
 "Bentley|For Men Intense":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
 "Lattafa|Asad":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
 "Lattafa|Khamrah":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
@@ -102,6 +121,17 @@ const scentTags={
 "Afnan|Supremacy Silver":{seasons:["Spring","Summer","Fall"],strength:"Strong",budget:"Affordable"},
 "Lattafa|Khamrah Qahwa":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
 "Mercedes-Benz|Club Black":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Mid-range"}
+,"Lalique|Encre Noire":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Affordable"},
+"Montblanc|Explorer":{seasons:["Spring","Fall"],strength:"Moderate",budget:"Mid-range"},
+"Givenchy|Gentleman Reserve Privée":{seasons:["Fall","Winter"],strength:"Strong",budget:"Premium"},
+"Burberry|Hero Eau de Parfum":{seasons:["Fall","Winter","Spring"],strength:"Moderate",budget:"Premium"},
+"Afnan|Supremacy Not Only Intense":{seasons:["Spring","Summer","Fall"],strength:"Strong",budget:"Affordable"},
+"Lattafa|Vintage Radio":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Affordable"},
+"Rochas|Moustache Eau de Parfum":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Affordable"},
+"Halloween|Man X":{seasons:["Fall","Winter"],strength:"Strong",budget:"Affordable"},
+"Bentley|For Men Absolute":{seasons:["Fall","Winter"],strength:"Moderate",budget:"Affordable"},
+"Mercedes-Benz|Select Night":{seasons:["Fall","Winter"],strength:"Strong",budget:"Mid-range"}
+
 };
 function fragranceKey(f){return f.brand+"|"+f.name}
 function showBreakdown(){const f=fragrances.find(x=>fragranceKey(x)===document.getElementById("breakdownFragrance").value);const n=f&&scentProfiles[fragranceKey(f)];document.getElementById("breakdownResult").innerHTML=f&&n?"<div><b>"+f.brand+" — "+f.name+"</b></div><div class=\"note-columns\"><div class=\"note-column\"><h3>Top notes</h3><p>"+n.top+"</p><p class=\"finder-help\">The opening impression.</p></div><div class=\"note-column\"><h3>Heart notes</h3><p>"+n.heart+"</p><p class=\"finder-help\">The main character as it develops.</p></div><div class=\"note-column\"><h3>Base notes</h3><p>"+n.base+"</p><p class=\"finder-help\">The deeper notes that linger.</p></div></div>":"Note details are not available for this fragrance yet."}
