@@ -34,7 +34,7 @@ const fragrances=[
 ];
 let active="All";
 const saved=JSON.parse(localStorage.getItem("ccSaved")||"[]");
-function bottle(f){return '<div class="product-art"><img class="product-photo" src="'+f.image+'" alt="'+f.brand+' '+f.name+' fragrance bottle" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="mini-bottle"><b>CC</b><small>FRAGRANCE</small></div></div>'}
+function bottle(f){return '<div class="product-art"><img class="product-photo" src="'+f.image+'" alt="'+f.brand+' '+f.name+' fragrance bottle" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="mini-bottle"><b>CC</b><small>FRAGRANCE</small></div></div>'}
 function renderProducts(){
  const q=document.getElementById("search").value.toLowerCase();
  const list=fragrances.filter(f=>(active==="All"||f.family===active)&&(`${f.name} ${f.brand} ${f.notes} ${f.family}`).toLowerCase().includes(q));
