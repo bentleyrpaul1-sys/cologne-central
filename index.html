@@ -157,7 +157,7 @@ function initBreakdown(){const s=document.getElementById("breakdownFragrance");c
 
 const saved=JSON.parse(localStorage.getItem("ccSaved")||"[]");
 function bottle(f){return '<div class="product-art"><img class="product-photo" src="'+f.image+'" alt="'+f.brand+' '+f.name+' fragrance bottle" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="mini-bottle"><b>CC</b><small>FRAGRANCE</small></div></div>'}
-function renderHomeFeatured(){const picks=fragrances.filter(f=>f.image&&f.image.trim()).slice(0,4);document.getElementById("homeFeatured").innerHTML=picks.map(f=>`<article class="card">${bottle(f)}<div class="cardbody"><div class="brandname">${f.brand} · ${f.family}</div><h3>${f.name}</h3><div class="notes">${f.notes}</div></div></article>`).join("");}
+function renderHomeFeatured(){const picks=fragrances.filter(f=>f.image&&f.image.trim()).slice(-4).reverse();document.getElementById("homeFeatured").innerHTML=picks.map(f=>`<article class="card">${bottle(f)}<div class="cardbody"><div class="brandname">${f.brand} · ${f.family}</div><h3>${f.name}</h3><div class="notes">${f.notes}</div></div></article>`).join("");}
 function renderNewArrivals(){const picks=fragrances.slice(-10);document.getElementById("newArrivals").innerHTML=picks.map(f=>`<article class="card">${bottle(f)}<div class="cardbody"><div class="brandname">${f.brand} · ${f.family}</div><h3>${f.name}</h3><div class="notes">${f.notes}</div><div class="cardbuttons"><button class="smallbtn" onclick="saveItem('${f.name}')">＋ Save to collection</button></div></div></article>`).join("");}
 function renderProducts(){
  const q=document.getElementById("search").value.toLowerCase();
